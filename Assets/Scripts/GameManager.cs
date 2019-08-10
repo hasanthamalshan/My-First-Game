@@ -29,10 +29,12 @@ public class GameManager : MonoBehaviour {
 
     public static void end(){
 		SceneManager.LoadScene(1);
+		
 	}
 
 	public static void restartGame(){
 		SceneManager.LoadScene(0);
+		score = 0;
 	}
 
 	public static void nextLevel(){

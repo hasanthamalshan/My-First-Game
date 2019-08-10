@@ -39,7 +39,7 @@ public class Ball : MonoBehaviour {
 			
              direction.x = -direction.x;
 
-			if(GameManager.hit%10 == 0){
+			if(GameManager.hit%5 == 0){
 				speed ++;
 				GameManager.level++;
 			}
