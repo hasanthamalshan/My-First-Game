@@ -35,7 +35,14 @@ public class Ball : MonoBehaviour {
 		if(other.tag == "Paddle"){
 			//bool isRight = other.GetComponent<Paddle>().isRight;
 			GameManager.score++;
+			GameManager.hit++;
+			
              direction.x = -direction.x;
+
+			if(GameManager.hit%10 == 0){
+				speed ++;
+				GameManager.level++;
+			}
 		    // if((isRight == true) && (direction.x < 0) ){
 			//  	direction.x = -direction.x;
 			//  }

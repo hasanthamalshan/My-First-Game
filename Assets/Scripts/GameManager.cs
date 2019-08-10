@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
     
 	public Ball ball;
 	public Paddle paddle;
+	public static int level = 1;
+	public static int hit;
 	public static Vector2 bottomLeft;
 	public static Vector2 topRight;
 
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour {
 
 	public static void restartGame(){
 		SceneManager.LoadScene(0);
+	}
+
+	public static void nextLevel(){
+
 	}
 	
 	
