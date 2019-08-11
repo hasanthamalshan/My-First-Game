@@ -5,12 +5,13 @@ using UnityEngine;
 public class Ball : MonoBehaviour {
 
 	Vector2 direction;
-	[SerializeField] float speed;
+	public static float speed = 5;
 	float radius;
 	// Use this for initialization
 	void Start () {
 		direction = Vector2.one.normalized;
 		radius = transform.localScale.x /2;
+
 	}
 	
 	// Update is called once per frame
@@ -23,10 +24,17 @@ public class Ball : MonoBehaviour {
 		if((transform.position.y > GameManager.topRight.y - radius) && (direction.y > 0)){
 			direction.y = -direction.y;
 		}
-		if((transform.position.x < GameManager.bottomLeft.x + radius) && (direction.x < 0)){
+		if((transform.position.x < (GameManager.bottomLeft.x + radius + 1.3f)) && (direction.x < 0)){
+			if(GameManager.score > PlayerPrefs.GetInt("HighScore")){
+				PlayerPrefs.SetInt("HighScore",GameManager.score);
+					
+			}
 			GameManager.end();
 		}
-		if((transform.position.x > GameManager.topRight.x - radius) && (direction.x > 0)){
+		if((transform.position.x > (GameManager.topRight.x - radius - 1.3f)) && (direction.x > 0)){
+			if(GameManager.score > PlayerPrefs.GetInt("HighScore")){
+				PlayerPrefs.SetInt("HighScore",GameManager.score);
+			}
 			GameManager.end();
 		}
 	}

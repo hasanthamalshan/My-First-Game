@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine;
 
 public class Paddle : MonoBehaviour {
@@ -17,12 +18,12 @@ public class Paddle : MonoBehaviour {
 	public void Init(bool isRight){
 		Vector2 pos = Vector2.zero;
 		if(isRight){
-			pos = new Vector2(GameManager.topRight.x,0);
+			pos = new Vector2(GameManager.topRight.x - 1.3f,0);
 			pos -= Vector2.right* transform.localScale.x;
 
 			input = "PaddleRight";
 		}else{
-			pos = new Vector2(GameManager.bottomLeft.x,0);
+			pos = new Vector2(GameManager.bottomLeft.x + 1.3f,0);
 			pos += Vector2.right* transform.localScale.x;
 
 			input = "PaddleLeft";
@@ -34,7 +35,7 @@ public class Paddle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float move = Input.GetAxis(input)*Time.deltaTime*speed;
+		float move = CrossPlatformInputManager.GetAxis(input)*Time.deltaTime*speed;
 		if((transform.position.y < GameManager.bottomLeft.y +  height/2) && (move < 0)){
 			move = 0;
 		}

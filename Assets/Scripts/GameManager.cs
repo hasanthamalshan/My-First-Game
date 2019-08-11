@@ -13,9 +13,15 @@ public class GameManager : MonoBehaviour {
 	public static Vector2 topRight;
 
 	public static int score = 0;
-
+	public static int flag = 0;
+    
+	private void Awake() {
+		if(flag == 0)
+		SceneManager.LoadScene(2);
+	}
 	// Use this for initialization
 	void Start () {
+
 		bottomLeft = Camera.main.ScreenToWorldPoint(new Vector2(0,0));
 		topRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width,Screen.height));
 		Instantiate(ball);
@@ -33,12 +39,16 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public static void restartGame(){
-		SceneManager.LoadScene(0);
 		score = 0;
+		Ball.speed = 5;
+		level = 1;
+		hit = 0;
+		SceneManager.LoadScene(0);
 	}
 
-	public static void nextLevel(){
-
+	public static void quitGame(){
+		Application.Quit();
+		//Debug.Log("quit");
 	}
 	
 	
