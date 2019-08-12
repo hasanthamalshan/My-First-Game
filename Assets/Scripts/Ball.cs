@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour {
 
 	Vector2 direction;
+//	public AudioSource S;
 	public static float speed = 5;
 	float radius;
 	// Use this for initialization
@@ -41,6 +42,7 @@ public class Ball : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
 		if(other.tag == "Paddle"){
+			//S.Play();
 			//bool isRight = other.GetComponent<Paddle>().isRight;
 			GameManager.score++;
 			GameManager.hit++;
